@@ -309,6 +309,10 @@ tbody tr{transition:background 0.1s}tbody tr:hover{background:var(--bg-2)}tbody 
 <p class="guide-hero-sub">7,583 yards · par 71 · 71 active players · No cut · $20M purse · May 7-10, 2026</p>
 </div>
 <div class="guide-grid">
+<div class="guide-card guide-card-wide" id="tee-sheet-card">
+<div class="guide-card-header"><span class="guide-icon">⏰</span><h3>Round 1 Tee Sheet · Thursday 5/7</h3></div>
+<div id="tee-sheet-body" style="font-size:11px;color:var(--text-1);line-height:1.6">Loading…</div>
+</div>
 <div class="guide-card guide-card-wide" id="steam-card" style="border:1px solid rgba(94,234,212,0.35)">
 <div class="guide-card-header" style="justify-content:space-between"><div style="display:flex;align-items:center;gap:var(--s2)"><span class="guide-icon">📊</span><h3>Steam &amp; News · 5/5/26</h3></div><span style="font-size:10px;color:var(--text-3);letter-spacing:0.05em" id="steam-stamp">Last updated: 5/5/26</span></div>
 <div id="steam-body" style="font-size:11px;color:var(--text-1);line-height:1.6">
@@ -566,6 +570,21 @@ const QH_HISTORY={"Rory McILROY":["1","T4","—","T16","T8","1","5","T47","1","T
 const DK_IDS_DEFAULT={
 "Rory McIlroy":"42976067","Cameron Young":"42976068","Xander Schauffele":"42976069","Matt Fitzpatrick":"42976070","Tommy Fleetwood":"42976071","Ludvig Aberg":"42976072","Si Woo Kim":"42976073","Robert MacIntyre":"42976074","Patrick Cantlay":"42976075","Sam Burns":"42976076","Rickie Fowler":"42976077","Adam Scott":"42976078","Hideki Matsuyama":"42976079","Ben Griffin":"42976080","Chris Gotterup":"42976081","Maverick McNealy":"42976082","Viktor Hovland":"42976083","Min Woo Lee":"42976084","Harris English":"42976085","Sepp Straka":"42976086","Jake Knapp":"42976087","Jordan Spieth":"42976088","J.J. Spaun":"42976089","Jason Day":"42976090","Kurt Kitayama":"42976091","Nicolai Hojgaard":"42976092","Justin Rose":"42976093","Akshay Bhatia":"42976094","Justin Thomas":"42976095","Gary Woodland":"42976096","Jacob Bridgeman":"42976097","Alex Smalley":"42976098","Alex Noren":"42976099","Keegan Bradley":"42976100","Ryan Gerard":"42976101","Sahith Theegala":"42976102","Corey Conners":"42976103","Sam Stevens":"42976104","Harry Hall":"42976105","Nick Taylor":"42976106","Max Homa":"42976107","Matthew McCarty":"42976108","Kristoffer Reitan":"42976109","Daniel Berger":"42976110","Pierceson Coody":"42976111","Bud Cauley":"42976112","Brian Harman":"42976113","Alex Fitzpatrick":"42976114","Aldrich Potgieter":"42976115","Sudarshan Yellamaraju":"42976116","Ryo Hisatsune":"42976117","Taylor Pendrith":"42976118","Ryan Fox":"42976119","Matt Wallace":"42976120","Denny McCarthy":"42976121","J.T. Poston":"42976122","Ricky Castillo":"42976123","Michael Kim":"42976124","Patrick Rodgers":"42976125","Andrew Novak":"42976126","Sungjae Im":"42976127","Tony Finau":"42976128","Andrew Putnam":"42976129","Lucas Glover":"42976130","Mackenzie Hughes":"42976131","Tom Hoge":"42976132","Webb Simpson":"42976133","Nicolas Echavarria":"42976134","David Lipsky":"42976135","Jhonattan Vegas":"42976136","Chandler Blanchet":"42976137","Brian Campbell":"42976138"
 };
+
+// === Round 1 tee times + groupings (Truist Championship 2-ball) ===
+const TEE_TIMES_R1={"J.T. Poston":{"time":"06:45","group":"06:45"},"Taylor Pendrith":{"time":"06:45","group":"06:45"},"Ryan Gerard":{"time":"06:55","group":"06:55"},"Matt McCarty":{"time":"06:55","group":"06:55"},"Jake Knapp":{"time":"07:05","group":"07:05"},"Daniel Berger":{"time":"07:05","group":"07:05"},"Mackenzie Hughes":{"time":"07:15","group":"07:15"},"Webb Simpson":{"time":"07:15","group":"07:15"},"Aldrich Potgieter":{"time":"07:25","group":"07:25"},"Jhonattan Vegas":{"time":"07:25","group":"07:25"},"Matt Wallace":{"time":"07:35","group":"07:35"},"Alex Smalley":{"time":"07:35","group":"07:35"},"Tom Hoge":{"time":"07:50","group":"07:50"},"Denny McCarthy":{"time":"07:50","group":"07:50"},"Robert MacIntyre":{"time":"08:00","group":"08:00"},"Harry Hall":{"time":"08:00","group":"08:00"},"Hideki Matsuyama":{"time":"08:10","group":"08:10"},"Maverick McNealy":{"time":"08:10","group":"08:10"},"Keegan Bradley":{"time":"08:20","group":"08:20"},"Andrew Novak":{"time":"08:20","group":"08:20"},"J.J. Spaun":{"time":"08:30","group":"08:30"},"Justin Rose":{"time":"08:30","group":"08:30"},"Gary Woodland":{"time":"08:40","group":"08:40"},"Adam Scott":{"time":"08:40","group":"08:40"},"Akshay Bhatia":{"time":"08:55","group":"08:55"},"Ben Griffin":{"time":"08:55","group":"08:55"},"Matt Fitzpatrick":{"time":"09:05","group":"09:05"},"Rory McIlroy":{"time":"09:05","group":"09:05"},"Tommy Fleetwood":{"time":"09:15","group":"09:15"},"Si Woo Kim":{"time":"09:15","group":"09:15"},"Alex Fitzpatrick":{"time":"09:25","group":"09:25"},"Rickie Fowler":{"time":"09:25","group":"09:25"},"Corey Conners":{"time":"09:35","group":"09:35"},"Sam Burns":{"time":"09:35","group":"09:35"},"Brian Campbell":{"time":"09:45","group":"09:45"},"Min Woo Lee":{"time":"09:45","group":"09:45"},"Tony Finau":{"time":"10:00","group":"10:00"},"Andrew Putnam":{"time":"10:00","group":"10:00"},"Max Homa":{"time":"10:10","group":"10:10"},"Ryo Hisatsune":{"time":"10:10","group":"10:10"},"Patrick Rodgers":{"time":"10:20","group":"10:20"},"Bud Cauley":{"time":"10:20","group":"10:20"},"Sudarshan Yellamaraju":{"time":"10:30","group":"10:30"},"Chandler Blanchet":{"time":"10:30","group":"10:30"},"Sahith Theegala":{"time":"10:40","group":"10:40"},"David Lipsky":{"time":"10:40","group":"10:40"},"Jason Day":{"time":"10:50","group":"10:50"},"Nicolai Hojgaard":{"time":"10:50","group":"10:50"},"Ricky Castillo":{"time":"11:05","group":"11:05"},"Harris English":{"time":"11:05","group":"11:05"},"Kurt Kitayama":{"time":"11:15","group":"11:15"},"Patrick Cantlay":{"time":"11:15","group":"11:15"},"Jacob Bridgeman":{"time":"11:25","group":"11:25"},"Brian Harman":{"time":"11:25","group":"11:25"},"Nick Taylor":{"time":"11:35","group":"11:35"},"Sungjae Im":{"time":"11:35","group":"11:35"},"Nico Echavarria":{"time":"11:45","group":"11:45"},"Viktor Hovland":{"time":"11:45","group":"11:45"},"Chris Gotterup":{"time":"11:55","group":"11:55"},"Ryan Fox":{"time":"11:55","group":"11:55"},"Xander Schauffele":{"time":"12:10","group":"12:10"},"Ludvig Aberg":{"time":"12:10","group":"12:10"},"Cameron Young":{"time":"12:20","group":"12:20"},"Justin Thomas":{"time":"12:20","group":"12:20"},"Sepp Straka":{"time":"12:30","group":"12:30"},"Jordan Spieth":{"time":"12:30","group":"12:30"},"Alex Noren":{"time":"12:40","group":"12:40"},"Pierceson Coody":{"time":"12:40","group":"12:40"},"Lucas Glover":{"time":"12:50","group":"12:50"},"Kristoffer Reitan":{"time":"12:50","group":"12:50"},"Michael Kim":{"time":"13:00","group":"13:00"},"Sam Stevens":{"time":"13:00","group":"13:00"}};
+(function _applyTeeTimes(){
+  PLAYERS.forEach(p=>{
+    const t=TEE_TIMES_R1[p.name];
+    if(!t)return;
+    p.r1_teetime=t.time;
+    // Wave: AM if before 11:00 (cooler/calmer); PM otherwise.
+    const [hh,mm]=t.time.split(':').map(Number);
+    const minutes=hh*60+mm;
+    p.r1_wave=minutes<11*60?'AM':'PM';
+    p.r1_group=t.group;
+  });
+})();
 
 // === Live odds refresh (board snapshot, applied at script load) ===
 // Each entry: [outright_winner, top5, top10] in American odds (e.g. +580, +125, -160).
@@ -1058,7 +1077,7 @@ function _swipeCardHTML(p,depth){
   };
   const head=`<div class="sc-top">
     <div class="sc-avatar">${getInitials(p.name)}</div>
-    <div style="flex:1;min-width:0"><div class="sc-name">${p.name}${p.salary>=9400?' ⭐':''}</div><div class="sc-sub">${p.tour_rank?'Tour #'+p.tour_rank:''}${p.owgr_rank?(p.tour_rank?' · ':'')+'OWGR #'+p.owgr_rank:''}${p.dk_odds?' · +'+p.dk_odds.toLocaleString():''}</div></div>
+    <div style="flex:1;min-width:0"><div class="sc-name">${p.name}${p.salary>=9400?' ⭐':''}</div><div class="sc-sub">${p.r1_teetime?'⏰ R1 '+p.r1_teetime+' '+(p.r1_wave||'')+(p.r1_group?' · w/ '+_partnerName(p):''):''}${p.dk_odds?(p.r1_teetime?' · ':'')+'+'+p.dk_odds.toLocaleString():''}</div></div>
     <div><div class="sc-sal">${fmtMoney(p.salary)}</div><div class="sc-sal-lbl">salary</div></div>
   </div>`;
   const verdictRow=`<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span class="sc-verdict ${v.cls}">${v.label}</span>${renderTier(p.tout_tier)}${renderForm(p.form_grade)}${p.qh_2025_finish?'<span class="tp-tag amber">PGA25 T'+p.qh_2025_finish+'</span>':''}${(p.steam_pct||0)>=15?'<span class="tp-tag green">🔥 +'+p.steam_pct+'%</span>':(p.steam_pct||0)<=-15?'<span class="tp-tag red">❄️ '+p.steam_pct+'%</span>':''}</div>`;
@@ -2097,6 +2116,38 @@ function _clearExposureCaps(){
 let trendSort={col:'true_sg_l20',dir:'desc'};
 // === Guide tab: Steam summary + news roll-up ===
 function _odds(n){return (n>=0?'+':'')+n}
+function _partnerName(p){
+  if(!p||!p.r1_group)return '';
+  const partner=PLAYERS.find(x=>x.r1_group===p.r1_group&&x.name!==p.name);
+  if(!partner)return '';
+  // Last name only to keep the sub-line short.
+  const last=partner.name.split(' ').slice(-1)[0];
+  return last;
+}
+function renderTeeSheet(){
+  const el=document.getElementById('tee-sheet-body');
+  if(!el)return;
+  const groups={};
+  PLAYERS.filter(p=>p.r1_teetime).forEach(p=>{
+    (groups[p.r1_group]=groups[p.r1_group]||[]).push(p);
+  });
+  const times=Object.keys(groups).sort();
+  if(!times.length){el.innerHTML='<div style="color:var(--text-3);font-size:11px">No tee times loaded.</div>';return}
+  const am=times.filter(t=>{const [h]=t.split(':').map(Number);return h<11});
+  const pm=times.filter(t=>{const [h]=t.split(':').map(Number);return h>=11});
+  const renderCol=(title,col,colorVar)=>`<div>
+    <div style="font-size:11px;font-weight:700;color:var(${colorVar});text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px">${title}</div>
+    ${col.map(t=>{
+      const ps=groups[t].slice().sort((a,b)=>(b.salary||0)-(a.salary||0));
+      const names=ps.map(p=>{
+        const studDot=p.salary>=9400?'⭐ ':'';
+        return `<span style="color:var(--text-1)">${studDot}${p.name}</span>${p.dk_odds?` <span style="color:var(--text-3);font-size:9px">+${p.dk_odds.toLocaleString()}</span>`:''}`;
+      }).join(' <span style="color:var(--text-3)">·</span> ');
+      return `<div style="display:grid;grid-template-columns:46px 1fr;gap:8px;padding:4px 0;border-bottom:1px dashed var(--border);font-size:11px"><span style="color:var(--accent);font-weight:700;font-family:ui-monospace,Menlo,monospace">${t}</span><span>${names}</span></div>`;
+    }).join('')}
+  </div>`;
+  el.innerHTML=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">${renderCol('🌅 AM wave (before 11:00)',am,'--good')}${renderCol('☀️ PM wave (11:00+)',pm,'--warn')}</div><div style="font-size:10px;color:var(--text-3);font-style:italic;line-height:1.5;margin-top:10px">Round 1 · 2-ball groupings · earliest off 6:45, last off 13:00. AM wave avoids the warmer/windier afternoon.</div>`;
+}
 function renderSteamCard(){
   const stampEl=document.getElementById('steam-stamp');
   const bodyEl=document.getElementById('steam-body');
@@ -2233,7 +2284,7 @@ document.querySelectorAll('.tab').forEach(t=>{
     if(state.tab==='top-plays')renderTopPlays();
     if(state.tab==='builds')renderBuilds();
     if(state.tab==='trending')renderTrending();
-    if(state.tab==='guide')renderSteamCard();
+    if(state.tab==='guide'){renderSteamCard();renderTeeSheet()}
   });
 });
 
@@ -2306,10 +2357,8 @@ if(_hdrStamp){
   _hdrStamp.textContent='Updated '+_t+' · DK Odds Live';
 }
 renderPanel();
-function _runSteamRender(){try{renderSteamCard();console.log('[steam] rendered OK')}catch(_e){console&&console.error&&console.error('[steam] error:',_e)}}
+function _runSteamRender(){try{renderSteamCard();renderTeeSheet();console.log('[steam] rendered OK')}catch(_e){console&&console.error&&console.error('[steam] error:',_e)}}
 _runSteamRender();
-// Fire again on full window load and after a short delay — defends against
-// any race between script-init and DOM readiness on slow devices.
 window.addEventListener('load',_runSteamRender);
 setTimeout(_runSteamRender,500);
 </script>
