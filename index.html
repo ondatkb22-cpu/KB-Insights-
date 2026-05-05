@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="0">
 <title>Truist Championship 2026 · PGA Insights by KB</title>
 <style>
 :root{--s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:20px;--s6:24px;--s7:32px;--s8:48px;--bg-0:#0a0e14;--bg-1:#11161e;--bg-2:#181f2a;--bg-3:#222a38;--border:rgba(255,255,255,0.06);--border-strong:rgba(255,255,255,0.12);--text-0:#f3f5f9;--text-1:#c8cfd9;--text-2:#8b94a3;--text-3:#525a68;--accent:#5eead4;--accent-dim:rgba(94,234,212,0.12);--sharp:#a78bfa;--warn:#f59e0b;--good:#10b981;--bad:#ef4444;--info:#38bdf8;--touch-min:44px;--card-gap:10px;--grad-bg-1:linear-gradient(180deg,#131822 0%,#0e131b 100%);--grad-bg-2:linear-gradient(180deg,#1b2230 0%,#151b26 100%);--inset-top:inset 0 1px 0 rgba(255,255,255,0.05);--shadow-fab:0 8px 28px rgba(94,234,212,0.35),0 2px 8px rgba(0,0,0,0.4)}
@@ -2276,7 +2279,12 @@ if(_hdrStamp){
   _hdrStamp.textContent='Updated '+_t+' · DK Odds Live';
 }
 renderPanel();
-try{renderSteamCard()}catch(_e){console&&console.error&&console.error(_e)}
+function _runSteamRender(){try{renderSteamCard();console.log('[steam] rendered OK')}catch(_e){console&&console.error&&console.error('[steam] error:',_e)}}
+_runSteamRender();
+// Fire again on full window load and after a short delay — defends against
+// any race between script-init and DOM readiness on slow devices.
+window.addEventListener('load',_runSteamRender);
+setTimeout(_runSteamRender,500);
 </script>
 <div id="export-modal-mount"></div>
 </body>
