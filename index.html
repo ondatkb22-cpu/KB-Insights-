@@ -333,7 +333,7 @@ tbody tr{transition:background 0.1s}tbody tr:hover{background:var(--bg-2)}tbody 
 <div class="guide-card-header"><span class="guide-icon">📊</span><h3>New Columns This Week</h3></div>
 <p class="guide-bullet"><b>📊 Steam</b> — Market movement vs Sunday opening odds. 🔥 = money coming in, ❄️ = money leaving.</p>
 <p class="guide-bullet"><b>📐 ΔFit</b> — odds_rank minus dg_baseline_rank. Positive = market sleeping on talent.</p>
-<p class="guide-bullet"><b>💰 Odds</b> — Current Wed outright odds.</p>
+<p class="guide-bullet"><b>💰 Odds</b> — Latest outright + Top 5 + Top 10 (refreshed 5/5/26). Steam recomputed against opener.</p>
 <p class="guide-bullet"><b>🏹 APP (0-100)</b> — 5-dimension approach composite, QH-weighted for 175+ yards:</p>
 <div style="font-size:11px;color:var(--text-2);padding:6px 0 6px 12px;border-left:2px solid var(--accent);margin:4px 0 8px">
 SG per shot (35%) · Proximity (25%) · Green hit rate (20%) · Bad shot avoidance (10%) · Good shot rate (10%)
@@ -532,6 +532,38 @@ const QH_HISTORY={"Rory McILROY":["1","T4","—","T16","T8","1","5","T47","1","T
 const DK_IDS_DEFAULT={
 "Rory McIlroy":"42976067","Cameron Young":"42976068","Xander Schauffele":"42976069","Matt Fitzpatrick":"42976070","Tommy Fleetwood":"42976071","Ludvig Aberg":"42976072","Si Woo Kim":"42976073","Robert MacIntyre":"42976074","Patrick Cantlay":"42976075","Sam Burns":"42976076","Rickie Fowler":"42976077","Adam Scott":"42976078","Hideki Matsuyama":"42976079","Ben Griffin":"42976080","Chris Gotterup":"42976081","Maverick McNealy":"42976082","Viktor Hovland":"42976083","Min Woo Lee":"42976084","Harris English":"42976085","Sepp Straka":"42976086","Jake Knapp":"42976087","Jordan Spieth":"42976088","J.J. Spaun":"42976089","Jason Day":"42976090","Kurt Kitayama":"42976091","Nicolai Hojgaard":"42976092","Justin Rose":"42976093","Akshay Bhatia":"42976094","Justin Thomas":"42976095","Gary Woodland":"42976096","Jacob Bridgeman":"42976097","Alex Smalley":"42976098","Alex Noren":"42976099","Keegan Bradley":"42976100","Ryan Gerard":"42976101","Sahith Theegala":"42976102","Corey Conners":"42976103","Sam Stevens":"42976104","Harry Hall":"42976105","Nick Taylor":"42976106","Max Homa":"42976107","Matthew McCarty":"42976108","Kristoffer Reitan":"42976109","Daniel Berger":"42976110","Pierceson Coody":"42976111","Bud Cauley":"42976112","Brian Harman":"42976113","Alex Fitzpatrick":"42976114","Aldrich Potgieter":"42976115","Sudarshan Yellamaraju":"42976116","Ryo Hisatsune":"42976117","Taylor Pendrith":"42976118","Ryan Fox":"42976119","Matt Wallace":"42976120","Denny McCarthy":"42976121","J.T. Poston":"42976122","Ricky Castillo":"42976123","Michael Kim":"42976124","Patrick Rodgers":"42976125","Andrew Novak":"42976126","Sungjae Im":"42976127","Tony Finau":"42976128","Andrew Putnam":"42976129","Lucas Glover":"42976130","Mackenzie Hughes":"42976131","Tom Hoge":"42976132","Webb Simpson":"42976133","Nicolas Echavarria":"42976134","David Lipsky":"42976135","Jhonattan Vegas":"42976136","Chandler Blanchet":"42976137","Brian Campbell":"42976138"
 };
+
+// === Live odds refresh (board snapshot, applied at script load) ===
+// Each entry: [outright_winner, top5, top10] in American odds (e.g. +580, +125, -160).
+const ODDS_UPDATE_DATE='2026-05-05';
+const ODDS_UPDATE_2026_05_05={"Rory McIlroy":[580,125,-160],"Cameron Young":[920,182,-112],"Xander Schauffele":[1175,220,108],"Matt Fitzpatrick":[1700,295,142],"Ludvig Aberg":[1750,330,162],"Tommy Fleetwood":[2350,390,182],"Si Woo Kim":[2400,395,182],"Adam Scott":[3100,500,230],"Sam Burns":[3200,520,240],"Patrick Cantlay":[3200,510,235],"Viktor Hovland":[3600,570,265],"Hideki Matsuyama":[3600,560,255],"Robert MacIntyre":[3800,580,265],"Rickie Fowler":[3800,570,260],"Min Woo Lee":[3900,600,270],"Maverick McNealy":[4100,630,290],"Jordan Spieth":[4300,660,300],"Jake Knapp":[4300,700,330],"Chris Gotterup":[4300,660,305],"Sepp Straka":[4400,670,305],"Kurt Kitayama":[4400,660,300],"J.J. Spaun":[4500,690,315],"Justin Thomas":[4700,720,325],"Ben Griffin":[4800,710,320],"Nicolai Hojgaard":[4900,750,340],"Harris English":[4900,710,320],"Jason Day":[5200,750,330],"Keegan Bradley":[6000,860,385],"Justin Rose":[6000,860,385],"Gary Woodland":[6200,900,400],"Alex Smalley":[6400,910,405],"Akshay Bhatia":[6400,920,410],"Jacob Bridgeman":[7400,1000,440],"Sam Stevens":[8000,1075,470],"Alex Noren":[8400,1100,475],"Ryan Gerard":[8600,1125,490],"Corey Conners":[8800,1175,500],"Sahith Theegala":[9400,1250,530],"Bud Cauley":[9800,1250,530],"Taylor Pendrith":[10500,1375,590],"Pierceson Coody":[10500,1400,600],"Kristoffer Reitan":[10500,1400,600],"Harry Hall":[10500,1375,590],"Daniel Berger":[11000,1400,580],"Ryo Hisatsune":[11500,1450,610],"Matt McCarty":[12000,1500,630],"Ryan Fox":[12500,1550,660],"Nick Taylor":[12500,1500,620],"Max Homa":[12500,1550,670],"Sudarshan Yellamaraju":[13500,1650,690],"Ricky Castillo":[13500,1650,690],"Brian Harman":[13500,1650,680],"J.T. Poston":[14000,1650,680],"Alex Fitzpatrick":[14500,1750,730],"Aldrich Potgieter":[14500,1900,820],"Matt Wallace":[15000,1750,720],"Denny McCarthy":[16000,1850,760],"Sungjae Im":[19000,2150,870],"Michael Kim":[19000,2150,880],"Tony Finau":[21000,2450,990],"Patrick Rodgers":[21000,2400,970],"Andrew Novak":[21000,2400,960],"Mackenzie Hughes":[25000,2700,1050],"Lucas Glover":[27500,2800,1100],"Webb Simpson":[32000,3300,1250],"Andrew Putnam":[34000,3200,1225],"Jhonattan Vegas":[38000,3800,1450],"Tom Hoge":[50000,4800,1750],"Nico Echavarria":[52500,5200,1900],"Chandler Blanchet":[60000,5500,1950],"David Lipsky":[90000,7400,2600],"Brian Campbell":[130000,10000,3300]};
+(function _applyOdds(){
+  PLAYERS.forEach(p=>{
+    const u=ODDS_UPDATE_2026_05_05[p.name];
+    if(!u)return;
+    const [dk,t5,t10]=u;
+    if(p.dk_odds_open==null)p.dk_odds_open=p.dk_odds||dk;
+    const open=p.dk_odds_open;
+    if(open&&dk!=null){
+      // Steam: positive = backed (odds shortened), negative = drifted out.
+      let pct=Math.round(((open-dk)/Math.max(1,open))*100);
+      pct=Math.max(-99,Math.min(99,pct));
+      p.steam_pct=pct;
+    }
+    p.dk_odds=dk;
+    p.t5_odds=t5;
+    p.t10_odds=t10;
+  });
+  // Recompute odds rank by current dk_odds (lowest = best).
+  const ranked=PLAYERS.filter(p=>p.salary&&p.dk_odds!=null).slice().sort((a,b)=>a.dk_odds-b.dk_odds);
+  ranked.forEach((p,i)=>{p.odds_rank=i+1});
+  // Update delta_fit = dg_field_rank - odds_rank where both are present.
+  PLAYERS.forEach(p=>{
+    if(p.salary&&p.odds_rank!=null&&p.dg_field_rank!=null){
+      p.delta_fit=p.dg_field_rank-p.odds_rank;
+    }
+  });
+})();
 function getP(name){return PLAYERS.find(p=>p.name===name)}
 function linSal(){return state.lineup.reduce((s,n)=>{const p=getP(n);return s+(p?p.salary:0)},0)}
 function linRemaining(){return CAP-linSal()}
