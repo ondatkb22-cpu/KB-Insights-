@@ -306,6 +306,10 @@ tbody tr{transition:background 0.1s}tbody tr:hover{background:var(--bg-2)}tbody 
 <p class="guide-hero-sub">7,583 yards · par 71 · 71 active players · No cut · $20M purse · May 7-10, 2026</p>
 </div>
 <div class="guide-grid">
+<div class="guide-card guide-card-wide" id="steam-card">
+<div class="guide-card-header" style="justify-content:space-between"><div style="display:flex;align-items:center;gap:var(--s2)"><span class="guide-icon">📊</span><h3>Steam &amp; News</h3></div><span style="font-size:10px;color:var(--text-3);letter-spacing:0.05em" id="steam-stamp">Loading…</span></div>
+<div id="steam-body" style="font-size:11px;color:var(--text-1);line-height:1.6">—</div>
+</div>
 <div class="guide-card">
 <div class="guide-card-header"><span class="guide-icon">🏌️</span><h3>Course Profile</h3></div>
 <p class="guide-bullet"><b>"Strongly Favoured Bombers"</b> per DataGolf course gauge. Distance is primary signal but accuracy matters MORE here than at open-fairway courses (tree-lined fairways demand precision).</p>
@@ -2061,6 +2065,64 @@ function _clearExposureCaps(){
   alert('Caps cleared. Existing builds unchanged — click Reset or Generate to apply.');
 }
 let trendSort={col:'true_sg_l20',dir:'desc'};
+// === Guide tab: Steam summary + news roll-up ===
+function _odds(n){return (n>=0?'+':'')+n}
+function renderSteamCard(){
+  const stampEl=document.getElementById('steam-stamp');
+  const bodyEl=document.getElementById('steam-body');
+  if(!stampEl||!bodyEl)return;
+  const now=new Date();
+  const time=now.toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});
+  stampEl.textContent='Last updated: 5/5/26, '+time;
+
+  const priced=PLAYERS.filter(p=>p.salary&&p.dk_odds!=null);
+  const moves=priced.filter(p=>typeof p.steam_pct==='number'&&p.steam_pct!==0)
+    .slice().sort((a,b)=>Math.abs(b.steam_pct)-Math.abs(a.steam_pct));
+  const inMoves=moves.filter(p=>p.steam_pct>0).slice(0,12);
+  const outMoves=moves.filter(p=>p.steam_pct<0).slice(0,12);
+
+  const row=p=>{
+    const open=p.dk_odds_open||p.dk_odds;
+    const cur=p.dk_odds;
+    const dir=p.steam_pct>=15?'🔥':p.steam_pct>=5?'↑':p.steam_pct<=-15?'❄️':p.steam_pct<=-5?'↓':'·';
+    const cls=p.steam_pct>=5?'color:var(--good);font-weight:700':p.steam_pct<=-5?'color:var(--bad);font-weight:700':'color:var(--text-2)';
+    return `<div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;padding:4px 0;border-bottom:1px dashed var(--border)">
+      <span style="color:var(--text-1)">${p.name}</span>
+      <span style="color:var(--text-3);font-size:10px;font-family:ui-monospace,Menlo,monospace">${_odds(open)}→${_odds(cur)}</span>
+      <span style="${cls};min-width:48px;text-align:right">${dir} ${p.steam_pct>0?'+':''}${p.steam_pct}%</span>
+    </div>`;
+  };
+
+  const newsItems=priced
+    .filter(p=>p.news_note&&!/(WITHDREW|NOT PLAYING)/i.test(p.news_note))
+    .slice(0,12);
+  const newsHtml=newsItems.length?newsItems.map(p=>{
+    return `<div style="padding:5px 0;border-bottom:1px dashed var(--border);font-size:11px"><b style="color:var(--text-0)">${p.name}</b> <span style="color:var(--text-2)">— ${p.news_note}</span></div>`;
+  }).join(''):'<div style="color:var(--text-3);font-size:11px">No player notes flagged.</div>';
+
+  const totalIn=moves.filter(p=>p.steam_pct>=5).length;
+  const totalOut=moves.filter(p=>p.steam_pct<=-5).length;
+
+  bodyEl.innerHTML=`
+    <div style="display:grid;grid-template-columns:1fr;gap:14px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:11px;font-weight:700;color:var(--good);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px"><span>🔥 Backed (money in)</span><span style="color:var(--text-3);font-weight:600">${totalIn} total</span></div>
+          ${inMoves.length?inMoves.map(row).join(''):'<div style="color:var(--text-3);font-size:11px">No notable steam in.</div>'}
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:11px;font-weight:700;color:var(--bad);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px"><span>❄️ Drifted (money out)</span><span style="color:var(--text-3);font-weight:600">${totalOut} total</span></div>
+          ${outMoves.length?outMoves.map(row).join(''):'<div style="color:var(--text-3);font-size:11px">No notable drift.</div>'}
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px">📰 Player notes</div>
+        ${newsHtml}
+      </div>
+      <div style="font-size:10px;color:var(--text-3);font-style:italic;line-height:1.5">Steam = (open − current) ÷ open. Negative = drift (odds got longer, market less confident). Positive = backed (odds got shorter, money coming in). Source: latest DK board snapshot baked into the app.</div>
+    </div>`;
+}
+
 function renderTrending(){
   const pl=PLAYERS.filter(p=>p.salary&&p.true_sg_l20!=null).sort((a,b)=>{
     const col=trendSort.col;const dir=trendSort.dir==='asc'?1:-1;
@@ -2189,6 +2251,7 @@ const priced=PLAYERS.filter(p=>p.salary).length;
 document.getElementById('priced-count').textContent=`Live · ${priced} players`;
 document.getElementById('pool-count').textContent=priced;
 renderPanel();
+renderSteamCard();
 </script>
 <div id="export-modal-mount"></div>
 </body>
