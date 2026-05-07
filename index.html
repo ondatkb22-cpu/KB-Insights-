@@ -2511,7 +2511,7 @@ document.getElementById('pool-count').textContent=priced;
 const _hdrStamp=document.getElementById('updated-stamp');
 if(_hdrStamp){
   const _t=new Date().toLocaleString([],{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
-  _hdrStamp.textContent='Updated '+_t+' · DK Odds Live';
+  _hdrStamp.textContent='Build v5/7-19:50 · loaded '+_t;
 }
 renderPanel();
 function _runSteamRender(){try{renderSteamCard();console.log('[steam] rendered OK')}catch(_e){console&&console.error&&console.error('[steam] error:',_e)}}
