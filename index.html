@@ -282,7 +282,111 @@ tbody tr{transition:background 0.1s}tbody tr:hover{background:var(--bg-2)}tbody 
 .exp-btn:hover{background:var(--bg-3)}
 .exp-btn.primary{background:var(--accent);color:#000;border-color:var(--accent)}
 .exp-btn.primary:hover{filter:brightness(1.1)}
+
+/* === AUDIT TAB · Post-Mortem styles (scoped) === */
+#tab-audit{
+  --paper:#f4efe6; --paper-2:#ebe4d6;
+  --apink:#1a1a1a; --apink-2:#3a3a3a; --apink-3:#6b6b6b;
+  --arule:#1a1a1a; --agood:#0f5132; --abad:#7a1f1f; --awarn:#8b5a00; --aaccent:#8b1414;
+  --hl-yellow:#f5e6a8; --hl-red:#f0d4cf; --hl-green:#d4e3d2;
+  background:var(--paper); color:var(--apink);
+  font-family:'Inter',sans-serif; line-height:1.55; font-size:16px;
+  padding:0; margin:-12px -12px 0; /* extend slightly into main padding so the masthead spans full width */
+  background-image:
+    radial-gradient(circle at 25% 15%, rgba(139,20,20,0.025) 0%, transparent 50%),
+    radial-gradient(circle at 75% 85%, rgba(15,81,50,0.02) 0%, transparent 50%);
+}
+#tab-audit *{box-sizing:border-box}
+#tab-audit .wrap{max-width:1100px;margin:0 auto;padding:32px 24px 80px}
+#tab-audit .masthead{border-top:6px double var(--arule);border-bottom:1px solid var(--arule);padding:18px 0 12px}
+#tab-audit .masthead-meta{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--apink-3);margin-bottom:14px}
+#tab-audit .masthead h1{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(34px,7vw,68px);line-height:0.92;letter-spacing:-0.02em;color:var(--apink);font-style:italic}
+#tab-audit .masthead h1 .accent{color:var(--aaccent);font-style:normal}
+#tab-audit .kicker{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--aaccent);margin-bottom:8px;font-weight:700}
+#tab-audit .dek{font-family:'Fraunces',serif;font-size:19px;line-height:1.4;color:var(--apink-2);margin-top:14px;max-width:780px;font-weight:400}
+#tab-audit .byline{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--apink-3);margin-top:16px;padding-top:12px;border-top:1px solid var(--arule)}
+#tab-audit .byline .live{display:inline-block;background:var(--aaccent);color:var(--paper);padding:2px 8px;margin-right:8px;font-weight:700}
+#tab-audit section{margin-top:48px}
+#tab-audit .section-label{display:flex;align-items:baseline;gap:14px;margin-bottom:24px;border-bottom:1px solid var(--arule);padding-bottom:8px}
+#tab-audit .section-num{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.15em;color:var(--aaccent);font-weight:700}
+#tab-audit .section-title{font-family:'Fraunces',serif;font-weight:800;font-size:26px;letter-spacing:-0.01em;color:var(--apink)}
+#tab-audit .verdict{background:var(--paper-2);border:1px solid var(--arule);padding:24px 28px;margin-bottom:8px;position:relative}
+#tab-audit .verdict::before{content:"";position:absolute;top:0;left:0;width:6px;height:100%;background:var(--aaccent)}
+#tab-audit .verdict-label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--aaccent);font-weight:700;margin-bottom:8px}
+#tab-audit .verdict-text{font-family:'Fraunces',serif;font-size:20px;line-height:1.4;font-weight:600;color:var(--apink)}
+#tab-audit .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--arule);margin:28px 0;background:var(--paper)}
+#tab-audit .metric{padding:18px 14px;border-right:1px solid var(--arule);background:var(--paper)}
+#tab-audit .metric:last-child{border-right:none}
+#tab-audit .metric-label{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--apink-3);margin-bottom:8px;font-weight:700}
+#tab-audit .metric-value{font-family:'Fraunces',serif;font-size:36px;font-weight:800;line-height:1;letter-spacing:-0.02em;color:var(--apink)}
+#tab-audit .metric-value.bad{color:var(--abad)}
+#tab-audit .metric-value.good{color:var(--agood)}
+#tab-audit .metric-value.warn{color:var(--awarn)}
+#tab-audit .metric-sub{font-size:11px;color:var(--apink-3);margin-top:6px;line-height:1.3}
+@media(max-width:760px){#tab-audit .metrics{grid-template-columns:repeat(2,1fr)}#tab-audit .metric{border-bottom:1px solid var(--arule)}#tab-audit .metric:nth-child(2){border-right:none}}
+#tab-audit .lineups{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--arule);border:1px solid var(--arule)}
+@media(max-width:760px){#tab-audit .lineups{grid-template-columns:1fr}}
+#tab-audit .lu-card{background:var(--paper);padding:20px}
+#tab-audit .lu-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;padding-bottom:10px;border-bottom:1px dotted var(--apink-3)}
+#tab-audit .lu-name{font-family:'Fraunces',serif;font-size:19px;font-weight:800;letter-spacing:-0.01em;color:var(--apink)}
+#tab-audit .lu-grade{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;padding:4px 10px;border:1px solid currentColor}
+#tab-audit .lu-grade.f, #tab-audit .lu-grade.d{color:var(--abad);background:var(--hl-red)}
+#tab-audit .lu-grade.c{color:var(--awarn);background:var(--hl-yellow)}
+#tab-audit .lu-grade.b{color:var(--agood);background:var(--hl-green)}
+#tab-audit .player-row{display:grid;grid-template-columns:1fr 50px 70px;gap:8px;padding:5px 0;font-size:13.5px;border-bottom:1px dotted #ccc;align-items:center;color:var(--apink)}
+#tab-audit .player-row:last-child{border-bottom:none}
+#tab-audit .player-row .pos{font-family:'JetBrains Mono',monospace;font-size:11.5px;text-align:right;color:var(--apink-3);font-weight:600}
+#tab-audit .player-row .score{font-family:'JetBrains Mono',monospace;font-size:13px;text-align:right;font-weight:700}
+#tab-audit .player-row .score.good{color:var(--agood)}
+#tab-audit .player-row .score.bad{color:var(--abad)}
+#tab-audit .player-row.smalley{background:var(--hl-red);margin:0 -8px;padding:5px 8px}
+#tab-audit .player-row.hero{background:var(--hl-green);margin:0 -8px;padding:5px 8px}
+#tab-audit .lu-summary{margin-top:14px;padding-top:10px;border-top:1px solid var(--apink);font-size:12.5px;color:var(--apink-2);font-style:italic;font-family:'Fraunces',serif;line-height:1.45}
+#tab-audit .missed-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:760px){#tab-audit .missed-grid{grid-template-columns:1fr}}
+#tab-audit .missed-card{border:1px solid var(--arule);padding:16px 18px;background:var(--paper);position:relative}
+#tab-audit .missed-card.headline{background:var(--hl-red)}
+#tab-audit .missed-pos{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--abad);letter-spacing:0.1em;font-weight:700;margin-bottom:6px}
+#tab-audit .missed-name{font-family:'Fraunces',serif;font-size:20px;font-weight:800;line-height:1.1;margin-bottom:6px;color:var(--apink)}
+#tab-audit .missed-why{font-size:12px;color:var(--apink-2);line-height:1.5}
+#tab-audit .missed-why b{color:var(--apink)}
+#tab-audit .lessons{counter-reset:lesson}
+#tab-audit .lesson{display:grid;grid-template-columns:60px 1fr;gap:24px;padding:24px 0;border-top:1px solid var(--arule)}
+#tab-audit .lesson:last-child{border-bottom:1px solid var(--arule)}
+#tab-audit .lesson::before{counter-increment:lesson;content:counter(lesson,decimal-leading-zero);font-family:'Fraunces',serif;font-size:42px;font-weight:900;color:var(--aaccent);line-height:0.9;font-style:italic}
+#tab-audit .lesson-title{font-family:'Fraunces',serif;font-size:22px;font-weight:800;letter-spacing:-0.01em;margin-bottom:8px;line-height:1.2;color:var(--apink)}
+#tab-audit .lesson-tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.12em;text-transform:uppercase;padding:2px 8px;background:var(--apink);color:var(--paper);margin-bottom:10px;font-weight:700}
+#tab-audit .lesson-body{font-size:14px;line-height:1.65;color:var(--apink-2)}
+#tab-audit .lesson-body strong{color:var(--apink)}
+#tab-audit .lesson-body p+p{margin-top:10px}
+#tab-audit .lesson-body ul{margin:10px 0 0 18px}
+#tab-audit .lesson-body li{margin-bottom:4px}
+#tab-audit .handoff{background:var(--apink);color:var(--paper);padding:32px 26px;margin-top:48px}
+#tab-audit .handoff .kicker{color:#f5d572}
+#tab-audit .handoff h2{font-family:'Fraunces',serif;font-size:32px;font-weight:800;font-style:italic;line-height:1;margin-bottom:14px;color:var(--paper)}
+#tab-audit .handoff .dek{color:#d4d4d4;font-size:16px}
+#tab-audit .do-dont{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#444;margin-top:24px;border:1px solid #444}
+@media(max-width:760px){#tab-audit .do-dont{grid-template-columns:1fr}}
+#tab-audit .do, #tab-audit .dont{background:var(--apink);padding:22px}
+#tab-audit .do h3, #tab-audit .dont h3{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;font-weight:700;margin-bottom:14px}
+#tab-audit .do h3{color:#7fc88f}
+#tab-audit .dont h3{color:#e08383}
+#tab-audit .do ul, #tab-audit .dont ul{list-style:none;padding:0}
+#tab-audit .do li, #tab-audit .dont li{padding:8px 0 8px 22px;font-size:13px;line-height:1.5;color:#d4d4d4;border-bottom:1px dotted #444;position:relative}
+#tab-audit .do li::before{content:"\2713";color:#7fc88f;position:absolute;left:0;font-weight:700}
+#tab-audit .dont li::before{content:"\2715";color:#e08383;position:absolute;left:0;font-weight:700}
+#tab-audit .do li:last-child, #tab-audit .dont li:last-child{border-bottom:none}
+#tab-audit .do li b, #tab-audit .dont li b{color:#fff}
+#tab-audit .aronimink{margin-top:32px;padding:22px;background:#3a2a1a;border-left:6px solid #f5d572;color:#f0e8d8}
+#tab-audit .aronimink h4{font-family:'Fraunces',serif;font-size:19px;font-weight:800;margin-bottom:10px;color:#f5d572;font-style:italic}
+#tab-audit .aronimink p{font-size:14px;line-height:1.6}
+#tab-audit .pullquote{font-family:'Fraunces',serif;font-style:italic;font-weight:600;font-size:26px;line-height:1.2;letter-spacing:-0.01em;border-top:3px solid var(--arule);border-bottom:3px solid var(--arule);padding:24px 0;margin:32px 0;text-align:center;color:var(--apink)}
+#tab-audit .pullquote::before{content:"\201C";color:var(--aaccent);font-size:1.1em}
+#tab-audit .pullquote::after{content:"\201D";color:var(--aaccent);font-size:1.1em}
+#tab-audit .audit-footer{margin-top:60px;padding-top:20px;border-top:6px double var(--arule);text-align:center;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--apink-3)}
+
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800;9..144,900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -298,6 +402,7 @@ tbody tr{transition:background 0.1s}tbody tr:hover{background:var(--bg-2)}tbody 
 <div class="tab" data-tab="table">📊 Table</div>
 <div class="tab" data-tab="cards">👆 Swipe</div>
 <div class="tab" data-tab="top-plays">⭐ Top Plays</div>
+<div class="tab" data-tab="audit">📓 Audit</div>
 <div class="tab" data-tab="builds">🏗️ Builds</div>
 </div>
 
@@ -703,6 +808,274 @@ SG per shot (35%) · Proximity (25%) · Green hit rate (20%) · Bad shot avoidan
 </div>
 <div id="builds-content"></div>
 </div>
+
+<!-- AUDIT TAB -->
+<div id="tab-audit" class="hidden">
+<div class="wrap">
+
+<header class="masthead">
+  <div class="masthead-meta">
+    <span>The Post-Mortem · Vol. 1 · No. 4</span>
+    <span>Sat · May 9 · 2026</span>
+  </div>
+  <div class="kicker">Truist Championship · Quail Hollow</div>
+  <h1>What we got <span class="accent">wrong.</span></h1>
+  <p class="dek">Three of four lineups are dead. The model picked the right top of the field — Cameron Young is leading — but the cores around him collapsed. Here's the autopsy, and what changes before Aronimink.</p>
+  <div class="byline"><span class="live">LIVE · END R3</span> &nbsp; Audit run against current PGA Tour leaderboard</div>
+</header>
+
+<section style="margin-top:36px">
+  <div class="verdict">
+    <div class="verdict-label">The Verdict</div>
+    <div class="verdict-text">We owned the leader (Cameron Young, T1, three of four lineups) but built three of four lineups around an Alex Smalley + Pendrith + Woodland mid-tier core that produced a single top-19 finish across nine roster spots. The "GPP-A" build — the one we labeled <em>recommended single-entry</em> — has the best shot remaining (4 of 6 in the top-25, J.J. Spaun T7), but no lineup is in winning territory. <strong>Cash is dead. GPP-A might cash a small payout.</strong></div>
+  </div>
+</section>
+
+<div class="metrics">
+  <div class="metric">
+    <div class="metric-label">Top-10 Hits</div>
+    <div class="metric-value bad">3<span style="font-size:18px;color:var(--apink-3);font-weight:400">/9</span></div>
+    <div class="metric-sub">Young, Spaun, Kitayama. Whole field has 9 spots in top-10; we own a third. Should be ~50% in winning lineups.</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Studs Missed</div>
+    <div class="metric-value bad">6</div>
+    <div class="metric-sub">A. Fitzpatrick, Sungjae, Hojgaard, JT, Fleetwood, Reitan — all top-7, none rostered.</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Smalley Exposure</div>
+    <div class="metric-value bad">100<span style="font-size:18px">%</span></div>
+    <div class="metric-sub">In all 4 lineups. Currently T39 (-1). Single biggest portfolio mistake.</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Best Lineup</div>
+    <div class="metric-value warn">~140</div>
+    <div class="metric-sub">Est. DK pts for GPP-A through R3. Cash threshold ~155, top-1% needs 220+.</div>
+  </div>
+</div>
+
+<section>
+  <div class="section-label">
+    <div class="section-num">§ 01</div>
+    <div class="section-title">Lineup-by-lineup autopsy</div>
+  </div>
+
+  <div class="lineups">
+    <div class="lu-card">
+      <div class="lu-head">
+        <div class="lu-name">LU#1 · The Rory Build</div>
+        <div class="lu-grade f">F</div>
+      </div>
+      <div class="player-row hero"><span>Cameron Young</span><span class="pos">T1</span><span class="score good">−12</span></div>
+      <div class="player-row"><span>Gary Woodland</span><span class="pos">T19</span><span class="score good">−4</span></div>
+      <div class="player-row"><span>J.T. Poston</span><span class="pos">T19</span><span class="score good">−4</span></div>
+      <div class="player-row"><span>Rory McIlroy</span><span class="pos">T39</span><span class="score bad">−1</span></div>
+      <div class="player-row smalley"><span>Alex Smalley</span><span class="pos">T39</span><span class="score bad">−1</span></div>
+      <div class="player-row"><span>Taylor Pendrith</span><span class="pos">T39</span><span class="score bad">−1</span></div>
+      <div class="lu-summary">The Rory anchor failed. He's been bizarrely flat (R1 70, R2 67, R3 in progress). 3 of 6 stuck at T39. Highest-conviction QH-history play of the build, dead. <strong>Top-10: 1/6.</strong></div>
+    </div>
+
+    <div class="lu-card">
+      <div class="lu-head">
+        <div class="lu-name">LU#2 · The Cash Build</div>
+        <div class="lu-grade f">F</div>
+      </div>
+      <div class="player-row hero"><span>Cameron Young</span><span class="pos">T1</span><span class="score good">−12</span></div>
+      <div class="player-row"><span>Gary Woodland</span><span class="pos">T19</span><span class="score good">−4</span></div>
+      <div class="player-row"><span>Harris English</span><span class="pos">T25</span><span class="score good">−3</span></div>
+      <div class="player-row smalley"><span>Alex Smalley</span><span class="pos">T39</span><span class="score bad">−1</span></div>
+      <div class="player-row"><span>Taylor Pendrith</span><span class="pos">T39</span><span class="score bad">−1</span></div>
+      <div class="player-row"><span>Xander Schauffele</span><span class="pos">T54</span><span class="score bad">+1</span></div>
+      <div class="lu-summary">Schauffele was the second stud — and he's actively going backwards (R3 72). Pendrith and Smalley below the cut line of relevance. <strong>Cash floor missed by 15+ pts.</strong></div>
+    </div>
+
+    <div class="lu-card" style="background:var(--hl-green)">
+      <div class="lu-head">
+        <div class="lu-name">LU#3 · GPP-A "recommended"</div>
+        <div class="lu-grade c">C</div>
+      </div>
+      <div class="player-row hero"><span>J.J. Spaun</span><span class="pos">T7</span><span class="score good">−9</span></div>
+      <div class="player-row hero"><span>Jacob Bridgeman</span><span class="pos">T13</span><span class="score good">−6</span></div>
+      <div class="player-row"><span>Gary Woodland</span><span class="pos">T19</span><span class="score good">−4</span></div>
+      <div class="player-row"><span>Ludvig Aberg</span><span class="pos">T19</span><span class="score good">−4</span></div>
+      <div class="player-row"><span>Matt Fitzpatrick</span><span class="pos">T44</span><span class="score bad">E</span></div>
+      <div class="player-row smalley"><span>Alex Smalley</span><span class="pos">T39</span><span class="score bad">−1</span></div>
+      <div class="lu-summary"><strong>Best of the four.</strong> 4 of 6 inside the top-25, Spaun is hot (R3 65), Bridgeman quietly strong. M. Fitz is the anchor that didn't anchor. With Sunday surge from Spaun this could limp into a min-cash. <strong>Top-25: 4/6.</strong></div>
+    </div>
+
+    <div class="lu-card">
+      <div class="lu-head">
+        <div class="lu-name">LU#4 · The Stack Build</div>
+        <div class="lu-grade d">D</div>
+      </div>
+      <div class="player-row hero"><span>Cameron Young</span><span class="pos">T1</span><span class="score good">−12</span></div>
+      <div class="player-row hero"><span>Kurt Kitayama</span><span class="pos">9</span><span class="score good">−8</span></div>
+      <div class="player-row hero"><span>J.J. Spaun</span><span class="pos">T7</span><span class="score good">−9</span></div>
+      <div class="player-row"><span>Taylor Pendrith</span><span class="pos">T39</span><span class="score bad">−1</span></div>
+      <div class="player-row smalley"><span>Alex Smalley</span><span class="pos">T39</span><span class="score bad">−1</span></div>
+      <div class="player-row"><span>Xander Schauffele</span><span class="pos">T54</span><span class="score bad">+1</span></div>
+      <div class="lu-summary"><strong>The triple-stud structure worked — 3 of 6 in the top-10.</strong> But the bottom three (Pendrith, Smalley, Xander +1) leak so much that the lineup can't break cash. This is the structural lesson: studs hit, mid-tier broke. <strong>Top-10: 3/6 — best in portfolio.</strong></div>
+    </div>
+  </div>
+</section>
+
+<div class="pullquote">The studs didn't fail. The mid-tier did.</div>
+
+<section>
+  <div class="section-label">
+    <div class="section-num">§ 02</div>
+    <div class="section-title">Six players we faded who beat us</div>
+  </div>
+
+  <div class="missed-grid">
+    <div class="missed-card headline">
+      <div class="missed-pos">T1 (−12) · CO-LEADER</div>
+      <div class="missed-name">Alex Fitzpatrick</div>
+      <div class="missed-why">Tagged him as <b>"locked-in form"</b> in pre-build (5/5 top-15s), then never put him in a lineup. The cheaper Fitzpatrick brother was the value of the slate. <b>Pure faded-fired miss.</b></div>
+    </div>
+    <div class="missed-card">
+      <div class="missed-pos">3 (−11)</div>
+      <div class="missed-name">Sungjae Im</div>
+      <div class="missed-why">Pre-build had him as <b>0.04 vs baseline</b> — model's worst miss. Sungjae's arrow was up before the event but our DG signal anchored to a flat 12-month average instead of L8.</div>
+    </div>
+    <div class="missed-card">
+      <div class="missed-pos">T4 (−10)</div>
+      <div class="missed-name">Nicolai Højgaard</div>
+      <div class="missed-why">Identified by DG conviction list and added to v2 GPP rotations, then pulled from the final 4 in favor of Smalley. <b>The wrong correlation choice.</b></div>
+    </div>
+    <div class="missed-card">
+      <div class="missed-pos">T4 (−10)</div>
+      <div class="missed-name">Justin Thomas</div>
+      <div class="missed-why">Course-fit said no (driving accuracy). Course-fit was wrong — JT's iron play overrides his miss-direction at QH where rough is generous in this 2026 setup.</div>
+    </div>
+    <div class="missed-card">
+      <div class="missed-pos">T4 (−10)</div>
+      <div class="missed-name">Tommy Fleetwood</div>
+      <div class="missed-why">Pre-build noted "same Total SG as Scheffler, longer odds." Then we didn't roster him anywhere. <b>This is an internal-contradiction error</b>, not a model error.</div>
+    </div>
+    <div class="missed-card">
+      <div class="missed-pos">T7 (−9)</div>
+      <div class="missed-name">Kristoffer Reitan</div>
+      <div class="missed-why">DK pricing inefficiency we didn't even consider. Norwegian, low salary, hot signal that wasn't in any of our content sources. <b>Field-blind spot.</b></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-label">
+    <div class="section-num">§ 03</div>
+    <div class="section-title">Lessons logged for the model</div>
+  </div>
+
+  <div class="lessons">
+    <div class="lesson"><div>
+      <div class="lesson-tag">PORTFOLIO STRUCTURE</div>
+      <div class="lesson-title">Stop putting one player in 100% of lineups.</div>
+      <div class="lesson-body">
+        <p>Alex Smalley was in 4/4 lineups at T39 (−1). Even our internal audit said "max 60% single-player exposure" — we violated our own rule. With four entries the math is unforgiving: one player tanking blows up 100% of your portfolio.</p>
+        <p><strong>Rule for Aronimink:</strong> hard cap any non-stud at 50% exposure (2/4 lineups). Reserve 100% exposure only for true studs (top 4 in the field by Total SG <em>and</em> form composite).</p>
+      </div>
+    </div></div>
+
+    <div class="lesson"><div>
+      <div class="lesson-tag">PRE-BUILD CONTRADICTION</div>
+      <div class="lesson-title">If a player is on the "locked-in form" list, they have to make at least one lineup.</div>
+      <div class="lesson-body">
+        <p>Pre-build flagged Alex Fitzpatrick, Aberg, Schauffele, M. Fitz, A. Fitz as form-locked (5/5 or 4/5 top-15s in last 5). Aberg and M. Fitz made it in. Alex Fitz <em>didn't</em> — and he's tied for the lead.</p>
+        <p><strong>Rule for Aronimink:</strong> any player tagged with the highest form designation must appear in ≥1 lineup. Make this an audit-stop in pga-dfs-audit.</p>
+      </div>
+    </div></div>
+
+    <div class="lesson"><div>
+      <div class="lesson-tag">MID-TIER PROCESS</div>
+      <div class="lesson-title">The mid-tier needs a ceiling test, not a floor test.</div>
+      <div class="lesson-body">
+        <p>Smalley, Pendrith, Poston — all picked as <em>safe</em> $7K-range plays with cash-like floors. Three of three failed. The problem: in a no-cut 72-player event, "safe" is meaningless. There's no MC risk. Every $7K spot needs to be evaluated on its <em>top-15 ceiling</em>, not its T40 floor.</p>
+        <p>Players we should have looked harder at:</p>
+        <ul>
+          <li>Bridgeman ($7,200ish, T13) — was in GPP-A, the only lineup we got right</li>
+          <li>Reitan, McCarty, Gotterup, Gerard — sub-$8K, top-20 probability comparable to Smalley but more volatile</li>
+        </ul>
+        <p><strong>Rule for Aronimink:</strong> in a major (cut event), floor matters. But the failure here was applying cut-event logic to a no-cut event. <em>Don't make the same mistake in reverse next week</em> — Aronimink has a cut, mid-tier floor matters again.</p>
+      </div>
+    </div></div>
+
+    <div class="lesson"><div>
+      <div class="lesson-tag">CORRELATION ERROR</div>
+      <div class="lesson-title">"QH course history" overweighted; "current arrow" underweighted.</div>
+      <div class="lesson-body">
+        <p>The model loved Rory (5x QH winner), Woodland (course horse), Harman (15 QH pts). Two of three are at T39 or worse. Meanwhile Sungjae, JT, Reitan, A. Fitz — none with notable QH history — are top-7.</p>
+        <p>Course history at a Tour stop with 24 prior playings is a <em>weak prior</em> when the player's current form is mediocre. Rory is winning the Masters but his post-Masters arrow at QH has been downward — we ignored that.</p>
+        <p><strong>Rule for Aronimink:</strong> for the major, downweight 2018 BMW course history (Bradley) <em>relative to L5 form arrow</em>. Same trap, different course.</p>
+      </div>
+    </div></div>
+
+    <div class="lesson"><div>
+      <div class="lesson-tag">SCHAUFFELE-SPECIFIC</div>
+      <div class="lesson-title">Schauffele is not a buy-the-dip yet.</div>
+      <div class="lesson-body">
+        <p>We rostered him in 2/4 lineups based on "elite ball-striker, must turn around." He went 69-73-72 and is going backwards. The BetMGM preview specifically said: <em>"a strong performance at Quail Hollow — fifth or better is my benchmark — garners Schauffele consideration. If the Quail Hollow performance falls short, I'll likely soften my view."</em></p>
+        <p>It fell short. Soften the view.</p>
+        <p><strong>Rule for Aronimink:</strong> downgrade Schauffele projection 1 tier. Don't make him a stud-tier lock at $10K+ pricing. He's a contrarian shot at this point, not a core.</p>
+      </div>
+    </div></div>
+
+    <div class="lesson"><div>
+      <div class="lesson-tag">DIVERSIFICATION</div>
+      <div class="lesson-title">4-lineup portfolios should look more different from each other.</div>
+      <div class="lesson-body">
+        <p>Looking at the 4 lineups: <strong>Cameron Young in 3, Smalley in 4, Pendrith in 3, Woodland in 3, Spaun in 2.</strong> That's not 4 lineups — that's 1 lineup with rotating tail-pieces.</p>
+        <p>If we'd swapped one of the Young lineups for an Alex Fitz / Sungjae / Hojgaard build, the portfolio would have actual GPP optionality.</p>
+        <p><strong>Rule for Aronimink:</strong> in a 4-entry portfolio, no player can appear in more than 3 (75%). Plus at least 1 lineup must be "no-Scheffler" — true contrarian.</p>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<section class="handoff">
+  <div class="kicker">Carrying it forward</div>
+  <h2>What ships to Aronimink.</h2>
+  <p class="dek">PGA Championship 2026 · May 14–17 · Aronimink GC · Newtown Square, PA · Donald Ross par-70 · ~7,300 yards</p>
+
+  <div class="aronimink">
+    <h4>The course is the inverse of Quail Hollow.</h4>
+    <p>Aronimink is a par-70, ~7,300-yard Donald Ross design. Approach play and ball-striking are weighted heavily; accuracy is below tour average; putting and around-green are roughly average. Two par-5s lost. Heavy bunker count. The QH "course history horse" archetype that just failed will be even less relevant — Aronimink last hosted the PGA in 1962. The relevant comp is the 2018 BMW (Keegan Bradley winner) and 2020 Women's PGA. <strong>Form &gt; history at this venue.</strong></p>
+  </div>
+
+  <div class="do-dont">
+    <div class="do">
+      <h3>DO at Aronimink</h3>
+      <ul>
+        <li><b>Lock Cameron Young in all 4.</b> Vindicated this week. Won Cadillac, T7 at QH after R3, +2.12 Total SG. 100% exposure justified for a true stud.</li>
+        <li><b>Roster Tommy Fleetwood somewhere.</b> Same Total SG as Scheffler at longer odds (+3000). We faded him this week and he's T4. Don't repeat.</li>
+        <li><b>Roster Alex Fitzpatrick somewhere.</b> 5/5 top-15 form held — must appear in ≥1 lineup at the major.</li>
+        <li><b>Re-baseline Sungjae Im.</b> Update the model with L8 form weighting (not L52). He was the "0.04 vs baseline" miss this week.</li>
+        <li><b>Use the GPP-A construction template.</b> 2 studs + 2 mid + 2 dud (with Bridgeman-type ceiling picks at the bottom). It was the only build that worked.</li>
+        <li><b>Hard-cap mid-tier exposure at 50% (2/4).</b> No more Smalley-in-everything.</li>
+      </ul>
+    </div>
+    <div class="dont">
+      <h3>DON'T at Aronimink</h3>
+      <ul>
+        <li><b>Don't anchor on QH/BMW course history.</b> Aronimink hasn't hosted a major in 64 years. The "horse" archetype is dead. Bradley ('18 BMW winner) gets a +0.5 fit bump, not a lineup lock.</li>
+        <li><b>Don't make Schauffele a stud-tier lock.</b> Downgrade one tier after this week's flop. Use as contrarian if at all.</li>
+        <li><b>Don't put any non-stud in 100% of lineups.</b> Smalley taught the lesson. Audit-stop this in pga-dfs-audit.</li>
+        <li><b>Don't fade DeChambeau on bunker fear without checking pricing.</b> T2-2-T4-T38-T4 at the PGA. If priced as a +2000 longshot, he's a contrarian core.</li>
+        <li><b>Don't pick "putting wizards" (Burns, McCarthy, Spieth).</b> Aronimink puts ~0.50 weight on putting. Don't pay $9K+ for putters at this venue.</li>
+        <li><b>Don't ignore "field-blind spot" pricing.</b> Reitan-type plays exist at every event. Add a "DK price inefficiency" scan before lock.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="audit-footer">
+  <div>Truist 2026 Post-Mortem · End of R3 · Audit complete · Lessons logged → pga-dfs-pipeline / pga-dfs-audit</div>
+  <div style="margin-top:8px;color:var(--apink-3);font-size:9.5px">Caveat: R3 still in progress for several players. Final pos may shift slightly. Top-10 missed-chalk list is locked.</div>
+</div>
+
+</div>
+</div>
+
 
 </main>
 
@@ -2452,7 +2825,7 @@ document.querySelectorAll('.tab').forEach(t=>{
     document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
     t.classList.add('active');
     state.tab=t.dataset.tab;
-    ['tab-table','tab-cards','tab-top-plays','tab-builds','tab-guide','tab-trending','tab-pairs','tab-weather'].forEach(id=>{
+    ['tab-table','tab-cards','tab-top-plays','tab-builds','tab-guide','tab-trending','tab-pairs','tab-weather','tab-audit'].forEach(id=>{
       const el=document.getElementById(id);
       if(el)el.classList.add('hidden');
     });
