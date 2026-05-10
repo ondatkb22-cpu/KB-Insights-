@@ -385,6 +385,73 @@ tbody tr{transition:background 0.1s}tbody tr:hover{background:var(--bg-2)}tbody 
 #tab-audit .pullquote::after{content:"\201D";color:var(--aaccent);font-size:1.1em}
 #tab-audit .audit-footer{margin-top:60px;padding-top:20px;border-top:6px double var(--arule);text-align:center;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--apink-3)}
 
+/* === AUDIT TAB · Supplement styles (scoped) === */
+#tab-audit .mast{border-top:6px double var(--arule);border-bottom:1px solid var(--arule);padding:18px 0 14px;margin-top:48px}
+#tab-audit .mast-meta{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--apink-3);margin-bottom:14px}
+#tab-audit .mast h1{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(32px,6.5vw,60px);line-height:0.95;letter-spacing:-0.02em;font-style:italic;color:var(--apink)}
+#tab-audit .mast h1 .accent{color:var(--aaccent);font-style:normal}
+#tab-audit .winner-box{margin-top:32px;border:1px solid var(--arule);background:var(--paper-2)}
+#tab-audit .winner-head{background:var(--apink);color:var(--paper);padding:14px 20px;display:flex;justify-content:space-between;align-items:baseline}
+#tab-audit .winner-head h3{font-family:'Fraunces',serif;font-size:19px;font-weight:800;font-style:italic;color:var(--paper)}
+#tab-audit .winner-head .total{font-family:'JetBrains Mono',monospace;font-size:17px;font-weight:700;color:#f5d572}
+#tab-audit .winner-table{width:100%;border-collapse:collapse;background:var(--paper)}
+#tab-audit .winner-table th{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--apink-3);text-align:left;padding:10px 14px;border-bottom:1px solid var(--arule);font-weight:700}
+#tab-audit .winner-table td{padding:10px 14px;border-bottom:1px dotted #ccc;font-size:14px;color:var(--apink)}
+#tab-audit .winner-table td.num{font-family:'JetBrains Mono',monospace;text-align:right}
+#tab-audit .winner-table tr.owned{background:var(--hl-green)}
+#tab-audit .winner-table tr.missed{background:var(--hl-red)}
+#tab-audit .winner-table .name{font-weight:600}
+#tab-audit .winner-table .pts{font-weight:700;color:var(--aaccent)}
+#tab-audit .tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;padding:2px 6px;font-weight:700;text-transform:uppercase}
+#tab-audit .tag.ours{background:var(--agood);color:#fff}
+#tab-audit .tag.miss{background:var(--abad);color:#fff}
+#tab-audit .dossier{border:1px solid var(--arule);background:var(--paper);margin-bottom:32px}
+#tab-audit .dossier-head{padding:20px 24px;border-bottom:1px solid var(--arule);background:var(--hl-cream);position:relative}
+#tab-audit .hl-cream{background:#fbf5e8}
+#tab-audit .dossier-head{background:#fbf5e8}
+#tab-audit .dossier-head::before{content:"";position:absolute;top:0;left:0;width:6px;height:100%;background:var(--aaccent)}
+#tab-audit .dossier-name{font-family:'Fraunces',serif;font-size:28px;font-weight:900;letter-spacing:-0.02em;font-style:italic;line-height:1;color:var(--apink)}
+#tab-audit .dossier-sub{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:var(--abad);margin-bottom:8px;font-weight:700;text-transform:uppercase}
+#tab-audit .dossier-finish{display:inline-block;font-family:'Fraunces',serif;font-size:38px;font-weight:900;color:var(--aaccent);font-style:italic;margin-left:14px;vertical-align:middle}
+#tab-audit .dossier-body{padding:24px}
+#tab-audit .dossier-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px}
+@media(max-width:680px){#tab-audit .dossier-grid{grid-template-columns:1fr}}
+#tab-audit .panel{border:1px solid var(--apink-3);padding:16px;background:var(--paper)}
+#tab-audit .panel-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;margin-bottom:10px}
+#tab-audit .panel-label.said{color:var(--agood)}
+#tab-audit .panel-label.did{color:var(--abad)}
+#tab-audit .panel ul{list-style:none;padding-left:0;margin:0}
+#tab-audit .panel li{padding:6px 0 6px 16px;font-size:13.5px;line-height:1.5;border-bottom:1px dotted #ccc;position:relative;color:var(--apink-2)}
+#tab-audit .panel li:last-child{border-bottom:none}
+#tab-audit .panel li::before{content:"";position:absolute;left:0;top:13px;width:8px;height:1px;background:var(--apink-3)}
+#tab-audit .panel li b{color:var(--apink)}
+#tab-audit .timeline-row{display:grid;grid-template-columns:90px 1fr;gap:14px;padding:10px 0;border-bottom:1px dotted #ccc;font-size:13.5px;line-height:1.5;color:var(--apink-2)}
+#tab-audit .timeline-row:last-child{border-bottom:none}
+#tab-audit .timeline-row .when{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.08em;color:var(--apink-3);text-transform:uppercase;font-weight:700;padding-top:2px}
+#tab-audit .timeline-row .what b{color:var(--apink)}
+#tab-audit .diagnosis{background:var(--hl-yellow);padding:18px 22px;margin-top:18px;border-left:5px solid var(--awarn)}
+#tab-audit .diagnosis-label{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--awarn);font-weight:700;margin-bottom:8px}
+#tab-audit .diagnosis-text{font-family:'Fraunces',serif;font-size:16px;line-height:1.45;color:var(--apink);font-weight:500}
+#tab-audit .diagnosis-text b{color:var(--aaccent)}
+#tab-audit .root{background:var(--apink);color:var(--paper);padding:30px;margin-top:48px}
+#tab-audit .root .kicker{color:#f5d572}
+#tab-audit .root h2{font-family:'Fraunces',serif;font-size:28px;font-weight:800;font-style:italic;line-height:1.05;margin-bottom:14px;color:var(--paper)}
+#tab-audit .root-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#444;margin-top:24px;border:1px solid #444}
+@media(max-width:680px){#tab-audit .root-grid{grid-template-columns:1fr}}
+#tab-audit .root-cell{background:var(--apink);padding:22px}
+#tab-audit .root-cell h4{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;color:#f5d572;margin-bottom:14px;font-weight:700}
+#tab-audit .root-cell p{font-size:14px;line-height:1.6;color:#d4d4d4;margin-bottom:10px}
+#tab-audit .root-cell p b{color:#fff}
+#tab-audit .rules{counter-reset:r}
+#tab-audit .rule{display:grid;grid-template-columns:64px 1fr;gap:20px;padding:22px 0;border-top:1px solid var(--arule)}
+#tab-audit .rule:last-child{border-bottom:1px solid var(--arule)}
+#tab-audit .rule::before{counter-increment:r;content:counter(r,decimal-leading-zero);font-family:'Fraunces',serif;font-size:36px;font-weight:900;color:var(--aaccent);font-style:italic;line-height:1}
+#tab-audit .rule-title{font-family:'Fraunces',serif;font-size:20px;font-weight:800;margin-bottom:8px;line-height:1.2;color:var(--apink)}
+#tab-audit .rule-body{font-size:14px;line-height:1.65;color:var(--apink-2)}
+#tab-audit .rule-body strong{color:var(--apink)}
+#tab-audit .codeblk{display:block;background:var(--paper-2);border-left:3px solid var(--aaccent);padding:10px 14px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--apink);margin-top:10px;line-height:1.5;white-space:pre-wrap}
+
+
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800;9..144,900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 </head>
@@ -1070,6 +1137,192 @@ SG per shot (35%) · Proximity (25%) · Green hit rate (20%) · Bad shot avoidan
 
 <div class="audit-footer">
   <div>Truist 2026 Post-Mortem · End of R3 · Audit complete · Lessons logged → pga-dfs-pipeline / pga-dfs-audit</div>
+
+<!-- ============= SUPPLEMENT: Reitan + Fowler ============= -->
+<header class="mast">
+  <div class="mast-meta"><span>The Post-Mortem · Supplement</span><span>Sun · May 10 · 2026</span></div>
+  <div class="kicker">Truist 2026 · The Two We Saw</div>
+  <h1>Reitan and Fowler. <span class="accent">We knew.</span></h1>
+  <p class="dek">The winning H2H lineup had six players. We owned one of them — Cameron Young. Two of the other five were already in our notes. This is the story of how the model identified them and the lineup builder still didn't pick them.</p>
+</header>
+
+<div class="winner-box">
+  <div class="winner-head">
+    <h3>The Winning Lineup (H2H)</h3>
+    <div class="total">Σ 574 DK pts</div>
+  </div>
+  <table class="winner-table">
+    <thead><tr><th>Player</th><th>Pos</th><th class="num">Score</th><th class="num">DK Pts</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr class="missed"><td class="name">K. Reitan</td><td>1st (W)</td><td class="num">−15</td><td class="num pts">123.50</td><td><span class="tag miss">faded</span></td></tr>
+      <tr class="missed"><td class="name">N. Højgaard</td><td>T2</td><td class="num">−13</td><td class="num pts">107.50</td><td><span class="tag miss">faded</span></td></tr>
+      <tr class="missed"><td class="name">T. Fleetwood</td><td>T5</td><td class="num">−11</td><td class="num pts">95.00</td><td><span class="tag miss">faded</span></td></tr>
+      <tr class="missed"><td class="name">M. McCarty</td><td>T10</td><td class="num">−9</td><td class="num pts">87.00</td><td><span class="tag miss">faded</span></td></tr>
+      <tr class="owned"><td class="name">C. Young</td><td>T10</td><td class="num">−9</td><td class="num pts">82.00</td><td><span class="tag ours">ours (3 of 4 LUs)</span></td></tr>
+      <tr class="missed"><td class="name">M. Lee</td><td>T14</td><td class="num">−7</td><td class="num pts">79.00</td><td><span class="tag miss">faded</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<section>
+  <div class="section-label">
+    <div class="section-num">§ 04</div>
+    <div class="section-title">Two dossiers: what the model saw vs what we built</div>
+  </div>
+
+  <!-- REITAN DOSSIER -->
+  <div class="dossier">
+    <div class="dossier-head">
+      <div class="dossier-sub">Dossier · Kristoffer Reitan · Salary $6,900</div>
+      <div><span class="dossier-name">The winner</span><span class="dossier-finish">1st</span></div>
+    </div>
+    <div class="dossier-body">
+      <div class="dossier-grid">
+        <div class="panel">
+          <div class="panel-label said">What the model said about Reitan</div>
+          <ul>
+            <li><b>"Highest σ in field"</b> — flagged in Lesson 13 as one of seven plays whose variance demanded ceiling-mode evaluation</li>
+            <li><b>Ceiling: 90.0 DK pts</b> at $6,900 salary — best ceiling-per-dollar of any sub-$7K play</li>
+            <li><b>$6,900 Mayo dart</b> — appeared in Pat Mayo's recommended dart list (1.10 source weight in pga-dfs-ownership)</li>
+            <li><b>Specifically called out post-R1:</b> "Reitan at $7.2K is excellent — he's actually T4 not T5, came out hot, and is priced like a punt"</li>
+            <li><b>"Proved it in R1, shot 66 in tough scoring conditions"</b> — soft+breezy R3 forecast flagged him as a bomber-feast beneficiary</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <div class="panel-label did">What we did with him</div>
+          <ul>
+            <li><b>Not in any of the 4 final lineups</b></li>
+            <li>The lineup builder's primary score function used <b>cash_proj</b> (67.9) not ceiling (90.0) — so he ranked #30+ in the pool</li>
+            <li>The mid-tier slot in 3 of 4 lineups went to <b>Alex Smalley</b> at $7,500 instead — $600 more, lower ceiling, 0 σ edge</li>
+            <li>One sentence in conversation: <b>"recommended swap and ignored"</b></li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="panel-label" style="color:var(--apink-3);margin-bottom:12px">Timeline of the miss</div>
+        <div class="timeline-row"><div class="when">Pre-event</div><div class="what"><b>Identified</b> as Pat Mayo dart play. Pulled in via pga-dfs-ownership skill.</div></div>
+        <div class="timeline-row"><div class="when">R1 morning</div><div class="what">Computed <b>σ 17.3 — highest in field</b>. Tagged for Lesson 13 ceiling-mode treatment.</div></div>
+        <div class="timeline-row"><div class="when">R1 close</div><div class="what">Shot <b>66 (-5)</b>, finished T5 R1. Conversation called him "excellent at $6,900, priced like a punt."</div></div>
+        <div class="timeline-row"><div class="when">R2 lock</div><div class="what">Still not in any of the 4 lineups. <b>Smalley (T39 final) appeared in 4/4 instead.</b></div></div>
+        <div class="timeline-row"><div class="when">R4</div><div class="what">Reitan <b>WINS</b> at −15 for 123.50 DK pts. He was the slate's biggest unforced miss.</div></div>
+      </div>
+      <div class="diagnosis">
+        <div class="diagnosis-label">Root cause</div>
+        <div class="diagnosis-text">The model <b>recognized him as the highest-σ play in the field</b> but the lineup builder optimized on <b>cash_proj</b>, not ceiling. Lesson 13 was written, the math was in our notes, and we still didn't add a ceiling-mode lineup. <b>Process gap, not signal gap.</b></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOWLER DOSSIER -->
+  <div class="dossier">
+    <div class="dossier-head">
+      <div class="dossier-sub">Dossier · Rickie Fowler · Salary ~$7,500</div>
+      <div><span class="dossier-name">The QH horse we listed and skipped</span><span class="dossier-finish">T10</span></div>
+    </div>
+    <div class="dossier-body">
+      <div class="dossier-grid">
+        <div class="panel">
+          <div class="panel-label said">What the model said about Fowler</div>
+          <ul>
+            <li><b>"30 QH points"</b> — third-highest course history in the field after Rory (80) and Day (23)</li>
+            <li><b>Won at Quail Hollow in 2012</b> — explicit reference in the v3 backtest</li>
+            <li><b>"Quietly playing great"</b> — T8 RBC Heritage, T9 Cadillac entering the week</li>
+            <li><b>+0.5 ownership adjustment</b> applied via news-buzz (DKN: "playing great golf")</li>
+            <li><b>Showdown matchup pick:</b> "Fowler $3,800 vs A. Fitzpatrick $14,500 — Fowler" (recommended in head-to-head betting context)</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <div class="panel-label did">What we did with him</div>
+          <ul>
+            <li><b>Not in any of the 4 final lineups</b></li>
+            <li>The v3 QH engine weighted <b>qh_pts × 0.8</b> — should have ranked him in the top 10 plays</li>
+            <li>Then we overrode the QH engine by adding the <b>"vs_baseline" form penalty</b> which dinged Fowler for his uneven L20 (Lesson 14: this penalty was too aggressive)</li>
+            <li>Lost the lineup spot to <b>Schauffele</b> in 2/4 lineups — at $10K, completely different price tier</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="panel-label" style="color:var(--apink-3);margin-bottom:12px">Timeline of the miss</div>
+        <div class="timeline-row"><div class="when">Pre-event</div><div class="what">v3 QH engine prioritizes course history. <b>Fowler is #3 in the field for QH points.</b></div></div>
+        <div class="timeline-row"><div class="when">Build phase</div><div class="what">vs_baseline form signal applied a penalty. Fowler dropped down the ranked list. <b>The engine contradicted itself.</b></div></div>
+        <div class="timeline-row"><div class="when">R1</div><div class="what">Shoots <b>74 (+3)</b>. Looks dead. Reinforces the fade decision.</div></div>
+        <div class="timeline-row"><div class="when">R2</div><div class="what">Shoots <b>63 (−8)</b>. Vaults to T10. We notice but lineups already locked.</div></div>
+        <div class="timeline-row"><div class="when">R3</div><div class="what">Holds T10 at −7. Lineups are dead. Fowler is on the leaderboard in pants we picked out and abandoned.</div></div>
+      </div>
+      <div class="diagnosis">
+        <div class="diagnosis-label">Root cause</div>
+        <div class="diagnosis-text">The QH-optimized engine literally had <b>qh_pts × 0.8</b> as Tier 1. Fowler has 30 QH points. The math should have ranked him top-10 in the pool. But we layered a <b>form penalty on top</b> that overruled the course-history weight. <b>Two priority systems fighting; the wrong one won.</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="root">
+  <div class="kicker">The pattern across both</div>
+  <h2>We didn't miss them. The builder missed them.</h2>
+  <p style="font-size:15px;line-height:1.6;color:#d4d4d4;max-width:720px">Both players were in the model's notes. The skill that processed Pat Mayo's content flagged Reitan. The QH backtest engine ranked Fowler top-10. Lesson 13 (ceiling-mode) was written before R1 even ended. <b style="color:#fff">The gap is between identification and selection.</b></p>
+  <div class="root-grid">
+    <div class="root-cell">
+      <h4>The Reitan failure mode</h4>
+      <p><b>Identification:</b> ✓ Pat Mayo dart, σ 17.3, ceiling 90 at $6,900</p>
+      <p><b>Lineup builder input:</b> cash_proj only (67.9)</p>
+      <p><b>Missing piece:</b> No lineup in the 4-entry portfolio was allocated to <b>pure ceiling-mode</b>. Lesson 13 said allocate 1 of 4. We allocated 0.</p>
+      <p><b>Cost:</b> ~120 DK pts left on the floor.</p>
+    </div>
+    <div class="root-cell">
+      <h4>The Fowler failure mode</h4>
+      <p><b>Identification:</b> ✓ 30 QH pts (#3 in field), T8 RBC, T9 Cadillac</p>
+      <p><b>Lineup builder input:</b> QH-weight Tier 1 + form penalty Tier 2 applied simultaneously</p>
+      <p><b>Missing piece:</b> When two signals conflict, no tiebreaker rule. Course-history weight got overruled by form penalty.</p>
+      <p><b>Cost:</b> Faded a top-10 finisher at his happiest hunting ground.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-label">
+    <div class="section-num">§ 05</div>
+    <div class="section-title">Two new audit-stop rules for Aronimink</div>
+  </div>
+  <p style="font-family:'Fraunces',serif;font-size:16px;color:var(--apink-2);margin-bottom:24px;font-style:italic">These get added to pga-dfs-audit as hard-fail checks before any 4-lineup portfolio is published.</p>
+  <div class="rules">
+    <div class="rule"><div>
+      <div class="rule-title">Reserve one of four lineups for pure ceiling-mode.</div>
+      <div class="rule-body">
+        <p>Lesson 13 was written. It was never enforced. The rule is now: <strong>in any 4-entry GPP portfolio, lineup #1 must use ceiling-mode scoring, not cash_proj.</strong></p>
+        <p>Ceiling-mode formula:</p>
+        <span class="codeblk">score = ceiling + (cash_proj × 0.3) − (own_pct × 0.5)</span>
+        <p>This lineup will look weird. It will have Reitan-shaped players. That's the point. <strong>If lineup #1 doesn't look weird, ceiling-mode wasn't actually applied.</strong> Audit-stop fires if the ceiling-mode lineup overlaps &gt;3 players with the cash lineup.</p>
+      </div>
+    </div></div>
+    <div class="rule"><div>
+      <div class="rule-title">When QH-tier course history and form penalty disagree, course history wins for top-10 horses.</div>
+      <div class="rule-body">
+        <p>The v3 engine was designed with QH course history as Tier 1. Fowler was top-3 in QH points and we faded him on a form penalty layered on top. <strong>The form penalty is allowed to <em>reduce</em> a course horse's projection, never to demote them out of the top 10 of the pool.</strong></p>
+        <p>Concretely:</p>
+        <span class="codeblk">if qh_pts &gt;= 25 and rank_after_form_penalty &gt; 15:
+  rank = min(rank, 10)  # Floor at top-10</span>
+        <p>For Aronimink: this rule is largely <em>inactive</em> — the venue hasn't hosted a major in 64 years so almost no one has "course points." But Keegan Bradley (2018 BMW winner here) gets the protection. So does anyone who played the 2020 Women's PGA at Aronimink.</p>
+      </div>
+    </div></div>
+    <div class="rule"><div>
+      <div class="rule-title">Single-source "dart picks" require an ownership scan check, not a lineup auto-include.</div>
+      <div class="rule-body">
+        <p>Pat Mayo's recommendation surfaced Reitan. We rightly didn't auto-lock him in (one source weight 1.10 isn't a lock). But we also didn't put him in <em>any</em> lineup. The right move:</p>
+        <ul style="margin-left:18px;margin-top:8px">
+          <li>If the player has ceiling &gt; 1.25× projection AND single-source DFS support → include in the ceiling-mode lineup.</li>
+          <li>If they also have σ in top quintile of field → upgrade to <em>required</em> include in ceiling-mode lineup.</li>
+        </ul>
+        <p style="margin-top:10px">Reitan hit <strong>both</strong> conditions. Required, not optional.</p>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<div class="audit-footer" style="margin-top:40px">
+  Truist 2026 Supplemental Audit · Reitan + Fowler · Both identified, neither selected · Process gap logged to pga-dfs-audit
+</div>
+
   <div style="margin-top:8px;color:var(--apink-3);font-size:9.5px">Caveat: R3 still in progress for several players. Final pos may shift slightly. Top-10 missed-chalk list is locked.</div>
 </div>
 
